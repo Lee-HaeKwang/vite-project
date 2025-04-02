@@ -1,5 +1,9 @@
 module.exports = {
-  branches: ['main'], // 또는 형님 쓰는 브랜치명
+  branches: [
+    'main',           
+    { name: 'develop', prerelease: true }
+  ],
+  repositoryUrl: 'https://github.com/Lee-HaeKwang/vite-project.git',
   plugins: [
     '@semantic-release/commit-analyzer',
     '@semantic-release/release-notes-generator',
