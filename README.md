@@ -1,80 +1,127 @@
-# 🔥 Vite Project - Production Setup
+# 🛠 Vite + React 프로젝트 개발환경 (with GitHub Actions)
 
-이 프로젝트는 Vite + React + TypeScript 기반의 실무형 프론트엔드 개발 환경입니다.  
-Zustand 상태관리, MUI 컴포넌트 시스템, ESLint + Prettier 포맷터,  
-Semantic Release 기반 자동 버전 관리 / 릴리즈를 지원합니다.  
-
----
-
-## 📦 주요 스택
-
-| 기술 | 설명 |
-|------|------|
-| Vite | 빠른 번들링을 위한 개발 툴 |
-| React | UI 프레임워크 |
-| TypeScript | 정적 타입 언어 |
-| Zustand | 상태 관리 라이브러리 |
-| MUI | UI 컴포넌트 라이브러리 |
-| ESLint | 코드 품질 검사기 |
-| Prettier | 코드 포맷터 |
-| Semantic Release | 자동 버전 관리 + changelog + tag 릴리즈 |
+> 작성일: 2025-04-02  
+> 작성자: **Lee-HaeKwang**  
+> 브랜치 전략: `main` (배포), `develop` (기능 개발)
 
 ---
 
-## 🛠️ 개발 환경 구성
+## 🧾 프로젝트 개요
+
+이 프로젝트는 다음을 모두 자동화 및 구성한 **모던 React 개발 템플릿**입니다:
+
+- `Vite + React + TypeScript`
+- `ESLint`, `Prettier`, `Commitlint`, `Semantic Release`
+- `GitHub Actions`를 이용한 자동 릴리즈
+
+---
+
+## 📁 프로젝트 구조
+
+```bash
+vite-project/
+├── .husky/               # Git hook
+├── .config/              # eslint, prettier, commitlint 설정
+├── .github/workflows/    # GitHub Actions 워크플로우
+├── public/
+├── src/                  # React 소스 코드
+├── README.md
+├── index.html
+├── package.json
+├── pnpm-lock.yaml
+```
+
+---
+
+## 🧑‍💻 개발 환경 세팅
+
+### 1. 패키지 설치
 
 ```bash
 pnpm install
+```
+
+### 2. 개발 서버 실행
+
+```bash
 pnpm dev
+```
 
+---
 
-🧼 코드 품질 툴
-ESLint: 저장 시 자동 검사
-Prettier: 저장 시 자동 정렬 (config: .config/prettier.config.cjs)
-lint-staged + husky: 커밋 시 자동 검사 실행
+## 📦 주요 라이브러리 및 툴
 
-📁 절대 경로 alias
-@components/*  => src/components/*
-@store/*       => src/store/*
-@pages/*       => src/pages/*
-@hooks/*       => src/hooks/*
-@utils/*       => src/utils/*
-@types/*       => src/types/*
+| 분류 | 사용 기술 |
+|------|-----------|
+| **번들러** | Vite |
+| **프레임워크** | React + TypeScript |
+| **스타일** | MUI |
+| **정적 분석** | ESLint + Prettier |
+| **커밋 검사** | commitlint + husky |
+| **버전 릴리즈** | semantic-release |
+| **CI** | GitHub Actions |
 
-🚀 브랜치 전략 및 릴리즈 자동화
-브랜치	    설명
-develop	    개발용 브랜치 (pre-release: v1.0.0-develop.1 형태)
-main	    배포 브랜치 (정식 릴리즈 v1.0.0)
+---
 
-semantic-release 실행
-# 시뮬레이션 (예행연습)
-pnpm run release:preview
+## ✅ Git & 릴리즈 전략
 
-# 실제 릴리즈
-pnpm run release
+### 브랜치 전략
 
-📚 커밋 메시지 컨벤션 (Conventional Commits)
-타입	            설명
-feat:	            새로운 기능 추가
-fix:	            버그 수정
-chore:	            설정, 빌드 작업
-docs:	            문서 작업
-refactor:	        리팩토링
-test:	            테스트 코드
-BREAKING CHANGE:	호환성 깨지는 변경 → major 릴리즈 유도 
+- `main`: 배포
+- `develop`: 기능 개발 및 CI/CD 테스트
 
-🔐 Git Hook 세팅
-npx husky install
-npx husky add .husky/pre-commit "npx lint-staged"
+### 커밋 메시지 컨벤션 (Conventional Commits)
 
-📦 필수 VS Code 확장 추천
-ESLint
-Prettier - Code formatter
-GitLens
-GitHub Copilot (선택)
+| 타입 | 설명 |
+|------|------|
+| `feat:` | 새로운 기능 |
+| `fix:` | 버그 수정 |
+| `chore:` | 설정 관련 작업 |
+| `docs:` | 문서 수정 |
+| `refactor:` | 리팩토링 |
+| `test:` | 테스트 코드 |
+| `BREAKING CHANGE:` | 주요 변경 (버전 `major` 올라감) |
 
-📸 릴리즈 예시 로그
-✔ next release version is 1.0.0
-✔ will create tag: v1.0.0
-✔ will update CHANGELOG.md
-✔ will push to origin/main
+---
+
+## 🔄 릴리즈 자동화 (CI/CD)
+
+### 릴리즈 방식
+
+- `develop` 브랜치에서 `feat:` 등 유효한 커밋 발생 시 자동 릴리즈
+- 버전 자동 증가 + `CHANGELOG.md` 생성 + GitHub Release 자동 게시
+
+### GitHub Actions 워크플로우 위치
+
+```
+.github/workflows/release.yml
+```
+
+---
+
+## 🧰 설정 파일 요약
+
+| 파일 | 역할 |
+|------|------|
+| `.eslintrc.cjs` | ESLint 설정 |
+| `.config/prettier.config.cjs` | Prettier 설정 |
+| `.config/commitlint.config.cjs` | Commit message 설정 |
+| `release.config.cjs` | semantic-release 설정 |
+| `.husky/` | Git hook 스크립트 저장 디렉토리 |
+
+---
+
+## ⚠️ 주의 사항
+
+- `develop` 브랜치에서 커밋 메시지가 잘못되면 릴리즈 안 됨
+- semantic-release는 `pnpm` 기준으로 구성됨 (npm X)
+- GitHub personal access token은 `GITHUB_TOKEN`으로 자동 처리됨 (Actions 실행만 되면 OK)
+
+---
+
+## 🎉 마무리
+
+이 템플릿으로 프로젝트 시작하면 자동으로 릴리즈되고  
+커밋 검사부터 포맷팅까지 알아서 굴러감!
+
+> 세상에 손 안 대고 코드 굴리기, 이제 시작이다 !!
