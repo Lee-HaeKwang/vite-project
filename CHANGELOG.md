@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/Lee-HaeKwang/vite-project/compare/v1.0.0...v1.0.1) (2025-04-02)
+
+
+### Bug Fixes
+
+* vite base path for Netlify ([5826b6c](https://github.com/Lee-HaeKwang/vite-project/commit/5826b6c5523f7a5e1788a09b744a9949adb2f994))
+
 ## [1.0.1-develop.1](https://github.com/Lee-HaeKwang/vite-project/compare/v1.0.0...v1.0.1-develop.1) (2025-04-02)
 
 
