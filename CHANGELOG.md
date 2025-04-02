@@ -1,3 +1,10 @@
+# [1.0.0-develop.2](https://github.com/Lee-HaeKwang/vite-project/compare/v1.0.0-develop.1...v1.0.0-develop.2) (2025-04-02)
+
+
+### Bug Fixes
+
+* grant write permissions for semantic-release ([d1e3c33](https://github.com/Lee-HaeKwang/vite-project/commit/d1e3c33a8f9c7261f9d2e6067d7f63b8c4f19e8e))
+
 # 1.0.0-develop.1 (2025-04-02)
 
 
